@@ -4,6 +4,7 @@ set modeline
 set history=1000
 set scrolloff=3
 set grepprg=ack\ -a
+set ruler
 set wildmenu
 set wildmode=list:longest
 
@@ -118,5 +119,5 @@ set foldmethod=syntax
 
 " vim conditional source of '~/.vim/vimau.vim'
 
-source vimau.vim
+source ~/.vim/vimau.vim
 
