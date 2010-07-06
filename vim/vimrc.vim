@@ -1,6 +1,7 @@
-" first things first
-"
+" vim: set filetype=vim :
+
 set modeline
+set modelines=5
 set history=1000
 set scrolloff=3
 set grepprg=ack\ -a
