@@ -119,6 +119,9 @@ set foldmethod=syntax
 
 
 " vim conditional source of '~/.vim/vimau.vim'
+" see e.g. http://vim.wikia.com/wiki/Loading_scripts_in_vimrc_safely
 
-source ~/.vim/vimau.vim
+if filereadable($HOME . "/.vim/vimau.vim")
+    source $HOME/.vim/vimau.vim
+endif
 
