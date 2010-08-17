@@ -1,6 +1,4 @@
-#!/usr/local/bin/perl
-# $Id:$
-# $Source:$
+#!/usr/bin/perl
 
 use strict;
 use warnings FATAL => 'all';
