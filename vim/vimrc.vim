@@ -1,4 +1,4 @@
-" vim: set filetype=vim :
+" vim: set filetype=vim tw=78:
 
 set modeline
 set modelines=5
@@ -8,17 +8,18 @@ set grepprg=ack\ -a
 set ruler
 set wildmenu
 set wildmode=list:longest
+set ignorecase                  " ignore case differences while searching
+set nocompatible                " make Vim less vi-compatible
 
 filetype on
 
-"let perl_fold=1
-
-" things for unicode
+" unicode/encoding settings
 set encoding=utf8
 "set fileencodings=ucs-bom,utf-8,windows-1252,latin1
 set fileencodings=ucs-bom,utf-8,latin1,windows-1252
+"set bomb                       " sets BOM (byte order mark) boolean
 
-"set bomb    " sets BOM (byte order mark) boolean
+"let perl_fold=1
 
 if &term =~ "xterm"
     if has("terminfo")
@@ -32,10 +33,8 @@ if &term =~ "xterm"
    endif
 endif
 
-" ignore case differences while searching
-set ignorecase
 
-"let mapleader = ","
+let mapleader = ","
 
 "nmap <Space>   /
 "nmap <C-Space> ?
@@ -43,22 +42,21 @@ set ignorecase
 "
 "nmap <Leader>c i# $Id<ESC>a:$<CR># $Source<ESC>a:$<CR><ESC>
 "nmap <Leader>d ma:r!date<CR>"add`ai<C-R>a<ESC><ESC>kJ
-"nmap <Leader>e :call PerlMathEval()<CR>
-"nmap <Leader>f oimport pdb; pdb.set_trace()<ESC>
+
+nmap <Leader>e :call PerlMathEval()<CR>
+nmap <Leader>f oimport pdb; pdb.set_trace()<ESC>
+
 "nmap <Leader>h :let @/ = "" <CR>
 "nmap <Leader>i i i18n:translate=""<ESC>
 "nmap <Leader>j :call FindUntranslated()<CR>
 "nmap <Leader>o i tal:omit-tag=""<ESC>
 "nmap <Leader>p i<CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 SYNOPSIS<CR><CR>=head1 DESCRIPTION<CR><CR>=cut<CR><ESC>
 "nmap <Leader>s iuse strict;<CR>use warnings;<CR><ESC>
-"vmap <Leader>t !perltidy
 "nmap <Leader>S :call MakeSubScript()<CR>
 "nmap <Leader>hc i2975 Lone Oak Drive, Suite 180<CR>Eagan, MN 55121-1553<CR><ESC>
 
-"vmap \s :call MakeSubScript()<CR>
-"
+"vmap <Leader>s :call s:MakeSubScript()<CR>
 
-"map <F2> :echo 'Current time = ' . strftime('%c')<CR>
 
 " handy function to evaluate perl expressions
 function! PerlMathEval()
@@ -70,16 +68,24 @@ perl << EOF
 EOF
 endfunction
 
+" Refer ':help using-<Plug>'
+if !hasmapto('<Plug>MakeSubScript')
+    map <unique> <Leader>s <Plug>MakeSubScript
+endif
+noremap <unique> <script> <Plug>MakeSubScript <SID>MakeSubScript
+noremap <SID>MakeSubScript :call <SID>MakeSubScript()<CR>
 
-" handy function to evaluate perl expressions
-function! MakeSubScript()
-perl << EOF
-    $lnum = ($curwin->Cursor)[0];
-    $curbuf->Append($lnum, "₁");
-EOF
+" handy function to convert numbers to subscripts
+" see http://www.swaroopch.com/notes/Vim_en:Scripting
+function! s:MakeSubScript() range
+    for i in range(a:firstline, a:lastline)
+        let x = tr(getline(i),"0123456789","₀₁₂₃₄₅₆₇₈₉")
+        call setline(i,x)
+    endfor
 endfunction
 
 
+" i18ndude/find-untranslated helper
 function! FindUntranslated()
    let curfile = bufname("%")
    let tmpfile = tempname()
