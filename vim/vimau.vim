@@ -12,37 +12,41 @@ if has("autocmd")
       \ endif
 endif
 
-au BufRead,BufNewFile *.cfg         set filetype=dosini
-au BufRead,BufNewFile *.js          set filetype=javascript
-au BufRead,BufNewFile Makefile      set filetype=make
-au BufRead,BufNewFile autohandler   set filetype=mason
-au BufRead,BufNewFile dhandler      set filetype=mason
-au BufRead,BufNewFile *.ma          set filetype=mason
-au BufRead,BufNewFile *.mas         set filetype=mason
-au BufRead,BufNewFile *.html        set filetype=mason
-au BufRead,BufNewFile *.htm         set filetype=mason
-au BufRead,BufNewFile *.json        set filetype=json
-au BufRead,BufNewFile *.pt          set filetype=xml
-au BufRead,BufNewFile *.py          set filetype=python
-au BufRead,BufNewFile *.R           set filetype=R
-au BufRead,BufNewFile *.t           set filetype=perl
-au BufRead,BufNewFile *.sh          set filetype=shell
-au BufRead,BufNewFile *rc           set filetype=rc
-au BufRead,BufNewFile *.sql         set filetype=sql
-au BufRead,BufNewFile *.tt          set filetype=tt2
-au BufRead,BufNewFile *.tt2         set filetype=tt2
-au BufRead,BufNewFile *.txt         set filetype=text
-au BufRead,BufNewFile *.yaml        set filetype=yaml
-au BufRead,BufNewFile *.zcml        set filetype=xml
-au BufRead,BufNewFile README*       set filetype=text
-au BufRead,BufNewFile Changes*      set filetype=text
-au BufRead,BufNewFile version.txt   set filetype=plonever
-au BufRead,BufNewFile *.djt         set filetype=htmldjango
-au BufRead,BufNewFile *.css.dtml    set filetype=css
+" set up custom file types
 
-au BufNewFile,BufRead *.R           setf r
-au BufNewFile,BufRead *.R           set syntax=r
-au BufNewFile,BufRead *.t           set tw=200
+augroup filetypedetect
+
+   au BufRead,BufNewFile *.cfg         set filetype=dosini
+   au BufRead,BufNewFile *.js          set filetype=javascript
+   au BufRead,BufNewFile Makefile      set filetype=make
+   au BufRead,BufNewFile autohandler   set filetype=mason
+   au BufRead,BufNewFile dhandler      set filetype=mason
+   au BufRead,BufNewFile *.ma          set filetype=mason
+   au BufRead,BufNewFile *.mas         set filetype=mason
+   au BufRead,BufNewFile *.html        set filetype=mason
+   au BufRead,BufNewFile *.htm         set filetype=mason
+   au BufRead,BufNewFile *.json        set filetype=json
+   au BufRead,BufNewFile *.pt          set filetype=xml
+   au BufRead,BufNewFile *.R           set filetype=R
+   au BufRead,BufNewFile *.t           set filetype=perl
+   au BufRead,BufNewFile *.sh          set filetype=shell
+   au BufRead,BufNewFile *rc           set filetype=rc
+   au BufRead,BufNewFile *.sql         set filetype=sql
+   au BufRead,BufNewFile *.tt          set filetype=tt2
+   au BufRead,BufNewFile *.tt2         set filetype=tt2
+   au BufRead,BufNewFile *.txt         set filetype=text
+   au BufRead,BufNewFile *.yaml        set filetype=yaml
+   au BufRead,BufNewFile *.zcml        set filetype=xml
+   au BufRead,BufNewFile README*       set filetype=text
+   au BufRead,BufNewFile Changes*      set filetype=text
+   au BufRead,BufNewFile version.txt   set filetype=plonever
+   au BufRead,BufNewFile *.djt         set filetype=htmldjango
+   au BufRead,BufNewFile *.css.dtml    set filetype=css
+   au BufNewFile,BufRead *.R           setf r
+   au BufNewFile,BufRead *.R           set syntax=r
+   au BufNewFile,BufRead *.t           set tw=200
+
+augroup END
 
 autocmd BufNewFile *.html    0read ~/.vim/templates/template.ma
 autocmd BufNewFile *.ma      0read ~/.vim/templates/template.ma
@@ -83,7 +87,6 @@ autocmd FileType pod          set ai et ts=4 tw=78
 autocmd FileType php          set ai et ts=4 foldmethod=marker
 autocmd FileType mason        set ai et ts=4
 autocmd FileType make         set ts=4
-autocmd FileType python       set ai et ts=4 tw=78
 autocmd FileType rc           set ai et ts=4
 autocmd FileType R            set ai et ts=4 tw=75
 autocmd FileType scheme       set ai et ts=3 tw=78 lisp
@@ -92,11 +95,7 @@ autocmd FileType sql          set ai et ts=4 tw=75
 autocmd FileType text         set ai et ts=3 tw=75 foldmethod=marker
 autocmd FileType tt2          set ai et ts=3 tw=65
 autocmd FileType yaml         set ai et ts=2 tw=75
-
 autocmd FileType html         set ai et ts=2 foldmethod=marker tw=78
 autocmd FileType xhtml        set ai et ts=2 foldmethod=marker
-autocmd FileType xml          set ai et ts=2 foldmethod=marker tw=999
 autocmd FileType htmldjango   set ai et ts=2 foldmethod=marker tw=78
-
 autocmd FileType plonever     set binary noeol
-
