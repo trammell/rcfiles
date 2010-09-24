@@ -69,6 +69,7 @@ autocmd BufWritePre *.sql   :%s/\s\+$//e
 autocmd BufWritePre *.t     :%s/\s\+$//e
 autocmd BufWritePre *.tt2   :%s/\s\+$//e
 autocmd BufWritePre *.txt   :%s/\s\+$//e
+autocmd BufWritePre *.yaml  :%s/\s\+$//e
 autocmd BufWritePre *.zcml  :%s/\s\+$//e
 autocmd BufWritePre .vimrc  :%s/\s\+$//e
 
