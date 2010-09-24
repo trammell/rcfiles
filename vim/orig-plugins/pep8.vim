@@ -35,4 +35,3 @@ else
           \ "<F5> is taken and a replacement was not assigned."
   endif
 endif
-
