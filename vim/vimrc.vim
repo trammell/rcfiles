@@ -123,6 +123,8 @@ set listchars=trail:-,tab:\.\
 " set folding to use file syntax
 set foldmethod=syntax
 
+" install pathogen
+call pathogen#runtime_append_all_bundles()
 
 " vim conditional source of '~/.vim/vimau.vim'
 " see e.g. http://vim.wikia.com/wiki/Loading_scripts_in_vimrc_safely
@@ -131,3 +133,13 @@ if filereadable($HOME . "/.vim/vimau.vim")
     source $HOME/.vim/vimau.vim
 endif
 
+" gui-specific settings
+if has('gui_running')
+    set guifont=Liberation_Mono_Regular:h12.00 " For GUI options
+    if has("gui_macvim")
+        set lines=35
+        set columns=90
+        set guifont=Menlo\ Regular:h16
+        "map <leader>t <Plug>PeepOpen  " For MacVim specific settings
+    endif
+endif
