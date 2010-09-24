@@ -34,18 +34,15 @@ if &term =~ "xterm"
 endif
 
 
-let mapleader = ","
+"let mapleader = ","
 
 "nmap <Space>   /
 "nmap <C-Space> ?
 "imap <C-F> {<CR>}<C-O>O
-"
 "nmap <Leader>c i# $Id<ESC>a:$<CR># $Source<ESC>a:$<CR><ESC>
 "nmap <Leader>d ma:r!date<CR>"add`ai<C-R>a<ESC><ESC>kJ
-
-nmap <Leader>e :call PerlMathEval()<CR>
-nmap <Leader>f oimport pdb; pdb.set_trace()<ESC>
-
+"nmap <Leader>e :call PerlMathEval()<CR>
+"nmap <Leader>f oimport pdb; pdb.set_trace()<ESC>
 "nmap <Leader>h :let @/ = "" <CR>
 "nmap <Leader>i i i18n:translate=""<ESC>
 "nmap <Leader>j :call FindUntranslated()<CR>
@@ -85,18 +82,18 @@ function! s:MakeSubScript() range
 endfunction
 
 
-" i18ndude/find-untranslated helper
-function! FindUntranslated()
-   let curfile = bufname("%")
-   let tmpfile = tempname()
-   silent execute "write! " . tmpfile
-   let output = system("i18ndude find-untranslated " . tmpfile . " 2>&1")
-   if output != ''
-      " Make sure the output specifies the correct filename
-      let output = substitute(output, fnameescape(tmpfile), fnameescape(curfile), "g")
-      echo output
-   endif
-endfunction
+"" i18ndude/find-untranslated helper
+"function! FindUntranslated()
+"   let curfile = bufname("%")
+"   let tmpfile = tempname()
+"   silent execute "write! " . tmpfile
+"   let output = system("i18ndude find-untranslated " . tmpfile . " 2>&1")
+"   if output != ''
+"      " Make sure the output specifies the correct filename
+"      let output = substitute(output, fnameescape(tmpfile), fnameescape(curfile), "g")
+"      echo output
+"   endif
+"endfunction
 
 " map ^N to set no-highlight-search; see http://vim.wikia.com/wiki/VimTip93
 nmap <silent> <C-N> :silent noh<CR>
