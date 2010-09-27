@@ -1,5 +1,3 @@
-" vim: set filetype=vim tw=78:
-
 set modeline
 set modelines=5
 set history=1000
@@ -33,25 +31,28 @@ if &term =~ "xterm"
    endif
 endif
 
+" gui-specific settings
+if has('gui_running')
+    set guifont=Liberation_Mono_Regular:h12.00 " For GUI options
+    if has("gui_macvim")
+        set lines=35
+        set columns=90
+        set guifont=Menlo\ Regular:h16
+        "map <leader>t <Plug>PeepOpen  " For MacVim specific settings
+    endif
+endif
 
-"let mapleader = ","
+
+
+let mapleader = ","
 
 "nmap <Space>   /
 "nmap <C-Space> ?
 "imap <C-F> {<CR>}<C-O>O
-"nmap <Leader>c i# $Id<ESC>a:$<CR># $Source<ESC>a:$<CR><ESC>
 "nmap <Leader>d ma:r!date<CR>"add`ai<C-R>a<ESC><ESC>kJ
 "nmap <Leader>e :call PerlMathEval()<CR>
-"nmap <Leader>f oimport pdb; pdb.set_trace()<ESC>
 "nmap <Leader>h :let @/ = "" <CR>
-"nmap <Leader>i i i18n:translate=""<ESC>
-"nmap <Leader>j :call FindUntranslated()<CR>
-"nmap <Leader>o i tal:omit-tag=""<ESC>
-"nmap <Leader>p i<CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 SYNOPSIS<CR><CR>=head1 DESCRIPTION<CR><CR>=cut<CR><ESC>
-"nmap <Leader>s iuse strict;<CR>use warnings;<CR><ESC>
 "nmap <Leader>S :call MakeSubScript()<CR>
-"nmap <Leader>hc i2975 Lone Oak Drive, Suite 180<CR>Eagan, MN 55121-1553<CR><ESC>
-
 "vmap <Leader>s :call s:MakeSubScript()<CR>
 
 
@@ -60,7 +61,7 @@ function! PerlMathEval()
 perl << EOF
     $lnum = ($curwin->Cursor)[0];
     $line = $curbuf->Get($lnum);
-    $line =~ s/.*=//;
+    $line =~ s{.*=}{};
     $curbuf->Append($lnum, eval $line);
 EOF
 endfunction
@@ -81,19 +82,6 @@ function! s:MakeSubScript() range
     endfor
 endfunction
 
-
-"" i18ndude/find-untranslated helper
-"function! FindUntranslated()
-"   let curfile = bufname("%")
-"   let tmpfile = tempname()
-"   silent execute "write! " . tmpfile
-"   let output = system("i18ndude find-untranslated " . tmpfile . " 2>&1")
-"   if output != ''
-"      " Make sure the output specifies the correct filename
-"      let output = substitute(output, fnameescape(tmpfile), fnameescape(curfile), "g")
-"      echo output
-"   endif
-"endfunction
 
 " map ^N to set no-highlight-search; see http://vim.wikia.com/wiki/VimTip93
 nmap <silent> <C-N> :silent noh<CR>
@@ -128,15 +116,4 @@ call pathogen#runtime_append_all_bundles()
 
 if filereadable($HOME . "/.vim/vimau.vim")
     source $HOME/.vim/vimau.vim
-endif
-
-" gui-specific settings
-if has('gui_running')
-    set guifont=Liberation_Mono_Regular:h12.00 " For GUI options
-    if has("gui_macvim")
-        set lines=35
-        set columns=90
-        set guifont=Menlo\ Regular:h16
-        "map <leader>t <Plug>PeepOpen  " For MacVim specific settings
-    endif
 endif
