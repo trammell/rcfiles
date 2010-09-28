@@ -92,7 +92,7 @@ autocmd FileType shell        set ai et ts=4
 autocmd FileType sql          set ai et ts=4 tw=75
 autocmd FileType text         set ai et ts=3 tw=75 foldmethod=marker
 autocmd FileType tt2          set ai et ts=3 tw=65
-autocmd FileType vim          set ai et ts=2 tw=78
+autocmd FileType vim          set ai et ts=4 tw=78
 autocmd FileType yaml         set ai et ts=2 tw=75
 autocmd FileType html         set ai et ts=2 foldmethod=marker tw=78
 autocmd FileType xhtml        set ai et ts=2 foldmethod=marker
