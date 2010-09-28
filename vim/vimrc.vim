@@ -1,3 +1,5 @@
+" vim: set filetype=vim "
+
 set modeline
 set modelines=5
 set history=1000
@@ -9,6 +11,15 @@ set wildmode=list:longest
 set ignorecase                  " ignore case differences while searching
 set nocompatible                " make Vim less vi-compatible
 
+" try to use syntax highlighting
+syntax enable
+syntax sync fromstart
+
+" turn on highlighting of trailing spaces
+set list
+set listchars=trail:-,tab:\.\
+
+" FIXME
 filetype on
 
 " unicode/encoding settings
@@ -17,18 +28,16 @@ set encoding=utf8
 set fileencodings=ucs-bom,utf-8,latin1,windows-1252
 "set bomb                       " sets BOM (byte order mark) boolean
 
-"let perl_fold=1
-
 if &term =~ "xterm"
     if has("terminfo")
-      set t_Co=8
-      set t_Sf=<Esc>[3%p1%dm
-      set t_Sb=<Esc>[4%p1%dm
-   else
-      set t_Co=8
-      set t_Sf=<Esc>[3%dm
-      set t_Sb=<Esc>[4%dm
-   endif
+        set t_Co=8
+        set t_Sf=<Esc>[3%p1%dm
+        set t_Sb=<Esc>[4%p1%dm
+    else
+        set t_Co=8
+        set t_Sf=<Esc>[3%dm
+        set t_Sb=<Esc>[4%dm
+    endif
 endif
 
 " gui-specific settings
@@ -38,23 +47,13 @@ if has('gui_running')
         set lines=35
         set columns=90
         set guifont=Menlo\ Regular:h16
-        "map <leader>t <Plug>PeepOpen  " For MacVim specific settings
     endif
 endif
 
-
-
 let mapleader = ","
 
-"nmap <Space>   /
-"nmap <C-Space> ?
-"imap <C-F> {<CR>}<C-O>O
-"nmap <Leader>d ma:r!date<CR>"add`ai<C-R>a<ESC><ESC>kJ
 "nmap <Leader>e :call PerlMathEval()<CR>
 "nmap <Leader>h :let @/ = "" <CR>
-"nmap <Leader>S :call MakeSubScript()<CR>
-"vmap <Leader>s :call s:MakeSubScript()<CR>
-
 
 " handy function to evaluate perl expressions
 function! PerlMathEval()
@@ -66,23 +65,6 @@ perl << EOF
 EOF
 endfunction
 
-" Refer ':help using-<Plug>'
-if !hasmapto('<Plug>MakeSubScript')
-    map <unique> <Leader>s <Plug>MakeSubScript
-endif
-noremap <unique> <script> <Plug>MakeSubScript <SID>MakeSubScript
-noremap <SID>MakeSubScript :call <SID>MakeSubScript()<CR>
-
-" handy function to convert numbers to subscripts
-" see http://www.swaroopch.com/notes/Vim_en:Scripting
-function! s:MakeSubScript() range
-    for i in range(a:firstline, a:lastline)
-        let x = tr(getline(i),"0123456789","₀₁₂₃₄₅₆₇₈₉")
-        call setline(i,x)
-    endfor
-endfunction
-
-
 " map ^N to set no-highlight-search; see http://vim.wikia.com/wiki/VimTip93
 nmap <silent> <C-N> :silent noh<CR>
 
@@ -90,30 +72,19 @@ nmap <silent> <C-N> :silent noh<CR>
 " http://vim.sourceforge.net/tips/tip.php?tip_id=1066
 noremap <silent><C-k> mz:silent +g/\m^\s*$/d<CR>`z:noh<CR>
 
-
 set background=dark
 set incsearch
 " set hlsearch
 colorscheme elflord
-syntax enable
-syntax sync fromstart
-
 set whichwrap=<,>,h,l,[,]
 
-" turn on highlighting of trailing spaces
-set list
-set listchars=trail:-,tab:\.\
-
-
-" set folding to use file syntax
-set foldmethod=syntax
-
 " install pathogen
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 " vim conditional source of '~/.vim/vimau.vim'
 " see e.g. http://vim.wikia.com/wiki/Loading_scripts_in_vimrc_safely
 
 if filereadable($HOME . "/.vim/vimau.vim")
-    source $HOME/.vim/vimau.vim
+  source $HOME/.vim/vimau.vim
 endif
