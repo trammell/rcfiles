@@ -1,4 +1,4 @@
-function <SID>Pep8()
+function! <SID>Pep8()
   set lazyredraw
   " Close any existing cwindows.
   cclose
@@ -35,4 +35,3 @@ else
           \ "<F5> is taken and a replacement was not assigned."
   endif
 endif
-
