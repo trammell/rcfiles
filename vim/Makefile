@@ -5,5 +5,5 @@ clean:
 	@echo
 
 install:
-	ln -sf $$(pwd)/vim/vimrc.vim $(HOME)/.vimrc
+	ln -sf $$(pwd)/vimrc.vim $(HOME)/.vimrc
 	ln -sf $$(pwd)/vim $(HOME)/.vim
