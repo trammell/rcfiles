@@ -1,1 +1,2 @@
-bundle/subscripts.vim/
+bundle/*
+!bundle/README
