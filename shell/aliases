@@ -1,4 +1,4 @@
-# vim: set et ts=4 :
+# vim: set filetype=sh :
 
 # smart 'which' function: first argument is default, remaining
 # arguments are searched for in $PATH
