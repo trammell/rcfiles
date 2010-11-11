@@ -62,7 +62,7 @@ autocmd BufNewFile *.txt     0read ~/.vim/templates/template.txt
 
 autocmd BufWritePre *.cfg   :%s/\s\+$//e
 autocmd BufWritePre *.php   :%s/\s\+$//e
-autocmd BufWritePre *.py    :%s/\s\+$//e
+"autocmd BufWritePre *.py    :%s/\s\+$//e
 autocmd BufWritePre *.pm    :%s/\s\+$//e
 autocmd BufWritePre *.pl    :%s/\s\+$//e
 autocmd BufWritePre *.pt    :%s/\s\+$//e
