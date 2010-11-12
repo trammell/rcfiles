@@ -1,4 +1,4 @@
-# vim: set et ts=4 :
+# vim: set filetype=sh :
 
 # smart 'which' function: first argument is default, remaining
 # arguments are searched for in $PATH
@@ -20,6 +20,7 @@ function multiwhich {
 
 alias 'cd..'='cd ..'
 alias h='history 100'
+alias git='git-achievements'
 alias ll='ls -l --color=tty'
 alias ls='ls -G'
 alias lal='less +G -n /usr/local/apache/logs/access_log'
@@ -33,6 +34,6 @@ alias sdr='screen -D -R'
 alias svnid='svn propset svn:keywords "Id URL"'
 alias ugm='UpdateGenericModules'
 alias ugs='UpdateGeneric; UpdateStaging'
-alias vi=$(multiwhich /bin/editor vim vi pico)
+alias vi=$(multiwhich /bin/editor mvim vim vi pico)
 
 unset multiwhich
