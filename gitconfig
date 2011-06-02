@@ -1,0 +1,14 @@
+[alias]
+	st = status
+[user]
+	name = John Trammell
+	email = johntrammell@gmail.com
+[core]
+	excludesfile = /Users/johntrammell/.gitignore
+	warnambiguousrefs = false
+[instaweb]
+	httpd=webrick
+[achievement]
+	upload = true
+[diff]
+	tool = opendiff
