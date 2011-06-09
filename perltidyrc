@@ -1,0 +1,9 @@
+-l=78       # max. line length = 78 characters
+-st         # results go to stdout
+-se         # errors go to stderr
+-i=4        # 4-space indents
+-ci=4       # 4-space indents for continuation
+-nce        # no cuddled elses
+-nsfs       # no space for semicolon
+-nolq       # no-outdent-long-quotes
+-pt=2       # paren tightness
