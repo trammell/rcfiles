@@ -23,8 +23,11 @@ alias h='history 100'
 alias git='git-achievements'
 alias ll='ls -l --color=tty'
 alias ls='ls -G'
-alias lal='less +G -n /usr/local/apache/logs/access_log'
-alias lel='less +G -n /usr/local/apache/logs/error_log'
+#alias lal='less +G -n /usr/local/apache/logs/access_log'
+#alias lel='less +G -n /usr/local/apache/logs/error_log'
+alias lel='less +G -n /var/log/apache2/error_log'
+alias lal='less +G -n /var/log/apache2/access_log'
+
 alias git='git-achievements'
 alias mysql-dev='mysql --defaults-group-suffix="-dev"'
 alias mail=$(multiwhich /bin/mail mutt mail mailx)
