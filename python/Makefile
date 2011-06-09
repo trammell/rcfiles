@@ -1,8 +1,5 @@
 usage:
-	@echo "usage: make [clean|install]"
+	@echo "usage: make [install]"
 
-clean:
-	@echo
-
-install:
-	install -m 0644 pydistutils.cfg $(HOME)/.pydistutils.cfg
+install: pydistutils.cfg
+	ln -sf $$(pwd)/pydistutils.cfg $(HOME)/.pydistutils.cfg
