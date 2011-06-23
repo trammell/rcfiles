@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -sf $(pwd)/$1 $HOME/.$1
