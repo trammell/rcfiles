@@ -4,7 +4,7 @@
 unset pathedit
 function pathedit () {
     if [ -d $1 ]; then
-        if ! echo $PATH | /usr/bin/egrep -q "(^|:)$1($|:)" ; then
+        if ! echo $PATH | egrep -q "(^|:)$1($|:)" ; then
             if [ "$2" = "after" ] ; then
                 PATH=$PATH:$1
             else
@@ -43,7 +43,7 @@ function setup_prompt {
     local PURPLE="\[\e[1;35m\]"
     local CYAN="\[\e[1;36m\]"
     local WHITE="\[\e[1;37m\]"
-    export PS1="${YELLOW}${PROMPT}${NO_COLOR} "
+    export PS1="${WHITE}${PROMPT}${NO_COLOR} "
 }
 setup_prompt
 unset setup_prompt
