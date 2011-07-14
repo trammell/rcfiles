@@ -38,5 +38,6 @@ alias svnid='svn propset svn:keywords "Id URL"'
 alias ugm='UpdateGenericModules'
 alias ugs='UpdateGeneric; UpdateStaging'
 alias vi=$(multiwhich /bin/editor mvim vim vi pico)
+alias vm='ssh vm'
 
 unset multiwhich
