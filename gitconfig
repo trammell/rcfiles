@@ -4,7 +4,7 @@
 	name = John Trammell
 	email = johntrammell@gmail.com
 [core]
-	excludesfile = /Users/johntrammell/.gitignore
+	excludesfile = ~/.gitignore
 	warnambiguousrefs = false
 [instaweb]
 	httpd=webrick

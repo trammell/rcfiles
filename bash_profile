@@ -23,6 +23,7 @@ pathedit /opt/local/sbin
 pathedit /usr/local/sbin
 pathedit $HOME/bin
 pathedit $HOME/work/github/git-achievements
+pathedit $HOME/local/go/bin
 
 unset pathedit
 
