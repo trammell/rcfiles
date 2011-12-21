@@ -12,5 +12,9 @@ install: ackrc gitconfig
 	ln -sf $$(pwd)/gitconfig $(HOME)/.gitconfig
 	ln -sf $$(pwd)/minicpanrc $(HOME)/.minicpanrc
 
-foo: bin/symlink
+
+links: bin/symlink
 	bin/symlink cvsrc
+	bin/symlink perltidyrc
+	bin/symlink psqlrc
+	bin/symlink bashrc.d
