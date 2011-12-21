@@ -1,6 +1,9 @@
+--follow
+--ignore-case
 --smart-case
 --sort-files
 --text
+--type=js
 --type-set=html=.djt
 --type-set=ini=.ini,.cfg
 --type-set=xml=.zcml
