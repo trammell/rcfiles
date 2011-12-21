@@ -1,5 +1,6 @@
 [alias]
 	st = status
+	info = remote -v show origin
 [user]
 	name = John Trammell
 	email = johntrammell@gmail.com
