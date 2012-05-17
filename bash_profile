@@ -1,6 +1,6 @@
 # .bash_profile
 
-# function to manupulating the path
+# function for manupulating the path
 unset pathedit
 function pathedit () {
     if [ -d $1 ]; then
@@ -16,14 +16,17 @@ function pathedit () {
 }
 
 pathedit /usr/local/elc/bin after
-pathedit /sw/bin
-pathedit /opt/postgres/bin
-pathedit /opt/local/bin
-pathedit /opt/local/sbin
-pathedit /usr/local/sbin
-pathedit $HOME/bin
+#pathedit /sw/bin
+#pathedit /opt/postgres-9.0/bin
+pathedit $HOME/local/bin
+#pathedit /opt/python-2.6/bin
+#pathedit /opt/python-2.7/bin
 pathedit $HOME/work/github/git-achievements
 pathedit $HOME/local/go/bin
+#pathedit $HOME/hc/builds/postgres/trunk/bin
+#pathedit $HOME/hc/builds/python/trunk/python-2.4/bin
+#pathedit $HOME/hc/builds/python/trunk/python-2.6/bin
+pathedit $HOME/bin
 
 unset pathedit
 

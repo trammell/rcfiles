@@ -1,0 +1,1 @@
+export PIP_USE_MIRRORS=1
