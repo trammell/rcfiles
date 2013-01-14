@@ -1,7 +1,7 @@
 # set prompt
 unset setup_prompt
 function setup_prompt {
-    local PROMPT="[ \u@\h:\W \# ]"
+    local PROMPT="[\u@\h:\W \t \#]"
     local NO_COLOR="\[\e[0m\]"
     local RED="\[\e[1;31m\]"
     local GREEN="\[\e[1;32m\]"
