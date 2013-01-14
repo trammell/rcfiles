@@ -28,6 +28,10 @@ alias ll='ls -l --color=tty'
 alias lel='less +G -n /var/log/apache2/error_log'
 alias lal='less +G -n /var/log/apache2/access_log'
 
+alias ls='ls --color=tty'
+alias sl='ls --color=tty'
+
+
 #alias git='git-achievements'
 alias mysql-dev='mysql --defaults-group-suffix="-dev"'
 alias mail=$(multiwhich /bin/mail mutt mail mailx)
