@@ -1,15 +1,35 @@
 [alias]
-	st = status
-	info = remote -v show origin
+st = status
+info = remote -v show origin
+lg = log --abbrev-commit --pretty=oneline --topo-order
+lgg = log --graph
+lb = branch -a --list $1
+fp = "!git fetch; git pull"
+
 [user]
-	name = John Trammell
-	email = johntrammell@gmail.com
+name = John Trammell
+email = john.trammell@outsell.com
+
 [core]
-	excludesfile = ~/.gitignore
-	warnambiguousrefs = false
+excludesfile = ~/.gitignore
+warnambiguousrefs = false
+sparsecheckout = true
+
 [instaweb]
-	httpd=webrick
-[achievement]
-	upload = true
+httpd=webrick
+
 [diff]
-	tool = opendiff
+tool = opendiff
+
+[push]
+default = tracking
+
+;[achievement]
+;upload = true
+
+[branch "master"]
+rebase = true
+
+[branch]
+autosetuprebase = always
+
