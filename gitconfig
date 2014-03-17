@@ -1,4 +1,5 @@
 [alias]
+<<<<<<< HEAD
 st = status
 info = remote -v show origin
 lg = log --abbrev-commit --pretty=oneline --topo-order
@@ -15,10 +16,26 @@ excludesfile = ~/.gitignore
 warnambiguousrefs = false
 sparsecheckout = true
 
+=======
+	st = status
+	info = remote -v show origin
+        lg = log --abbrev-commit --pretty=oneline --topo-order
+	lgg = log --graph
+	lb = branch -a --list $1
+	fp = "!git fetch; git pull"
+[user]
+	name = John Trammell
+	email = john.trammell@outsell.com
+[core]
+	excludesfile = ~/.gitignore
+	warnambiguousrefs = false
+	sparsecheckout = true
+>>>>>>> origin/master
 [instaweb]
 httpd=webrick
 
 [diff]
+<<<<<<< HEAD
 tool = opendiff
 
 [push]
@@ -33,3 +50,12 @@ rebase = true
 [branch]
 autosetuprebase = always
 
+=======
+	tool = opendiff
+[branch "master"]
+	rebase = true
+[push]
+	default = upstream
+[branch]
+	autosetuprebase = always
+>>>>>>> origin/master
