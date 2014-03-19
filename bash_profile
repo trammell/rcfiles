@@ -15,10 +15,8 @@ function pathedit () {
     export PATH
 }
 
-pathedit /usr/local/elc/bin after
 pathedit $HOME/local/bin
 pathedit $HOME/bin
-#pathedit $HOME/local/go/bin
 
 unset pathedit
 

@@ -1,16 +1,2 @@
-
-#*        verbose=1   # global options
-
+*        verbose=1   # global options
 diff     flags=-u
-
-# Install built modules into my local ELC modules area; from there check them
-# in and proceed as usual.
-install  --install_path     lib=/home/johnt/devel/elc/modules/lib
-         --install_path    arch=/home/johnt/devel/elc/modules/lib/i386-linux-thread-multi
-         --install_path  script=/home/johnt/devel/elc/modules/bin
-         --install_path     bin=/home/johnt/devel/elc/modules/bin
-         --install_path  bindoc=/home/johnt/devel/elc/modules/man/man1
-         --install_path  libdoc=/home/johnt/devel/elc/modules/man/man3
-         --install_path binhtml=/home/johnt/devel/elc/modules/html
-         --install_path libhtml=/home/johnt/devel/elc/modules/html
-

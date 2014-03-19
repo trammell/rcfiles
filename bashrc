@@ -1,4 +1,3 @@
-# $Id: bashrc,v 1.28 2007/10/04 19:49:55 johnt Exp $
 # vim: set filetype=sh :
 
 # source global bash script
