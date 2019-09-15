@@ -1,0 +1,9 @@
+# mutator template
+snippet mut
+		/* mutator for value of $${1:variable} */
+		public function $1() {
+			if (func_num_args() >= 1) {
+				$this->$1 = func_get_arg(0);
+			}
+			return $this->$1;
+		}
