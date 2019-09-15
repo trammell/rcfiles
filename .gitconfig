@@ -1,34 +1,23 @@
+[user]
+	name = John Trammell
+	email = john.trammell@outsell.com
 [alias]
 	st = status
+	rpo = remote prune origin
 	info = remote -v show origin
 	lg = log --abbrev-commit --pretty=oneline --topo-order
 	lgg = log --graph
 	lb = branch -a --list $1
 	fp = "!git fetch; git pull"
-
-[user]
-	name = John Trammell
-	email = john.trammell@outsell.com
-
 [core]
 	excludesfile = ~/.gitignore
 	warnambiguousrefs = false
 	sparsecheckout = true
-
-[instaweb]
-	httpd=webrick
-
 [diff]
 	tool = opendiff
-
 [push]
 	default = tracking
-
-;[achievement]
-;	upload = true
-
+[branch]
+	autosetuprebase = always
 [branch "master"]
 	rebase = true
-
-[branch]
-autosetuprebase = always
