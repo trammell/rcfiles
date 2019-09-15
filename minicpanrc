@@ -1,3 +1,0 @@
-local: /mnt/versionning/mirrors/cpan
-remote: http://mirrors.kernel.org/cpan/
-module_filters: qr/^(Acme|Bio)/i
