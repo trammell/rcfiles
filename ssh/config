@@ -1,9 +1,0 @@
-# vim: set expandtab ts=2 :
-
-# set up multiplexing
-#ControlMaster auto
-#ControlPath /tmp/ssh_mux_%h_%p_%r
-
-#--- catchall
-Host *
-  ForwardAgent    no
