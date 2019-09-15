@@ -117,6 +117,111 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# set up CLI completion, see
+# http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+
+complete -C aws_completer aws
+
+
+# configure default editor (find 'vim', or, failing that, 'vi')
+
+if [ -z "$EDITOR" ]; then
+    MVIM=$(which mvim 2>/dev/null)
+    if [ ! -z "$MVIM" ]; then
+        EDITOR="$MVIM -f"
+        export EDITOR
+    fi
+fi
+if [ -z "$EDITOR" ]; then
+    export EDITOR=`which vim`
+fi
+if [ -z "$EDITOR" ]; then
+    export EDITOR=`which vi`
+fi
+if [ -z "$EDITOR" ]; then
+    export EDITOR='/bin/editor'
+fi
+
+
+
+# set up miscellaneous environment variables
+
+export CVSIGNORE="*.db *_usertest .*.swp"
+export CVS_RSH=ssh
+export FIGNORE="CVS:~:.o:.svn:.egg-info:.pyc:.old"
+export GREP_OPTIONS="-I"
+export LESS=-x4
+export MYSQL_PS1="\u@\h:\d> "
+export MAGENTO_TEST_AUTHOR=1
+export APP_WAR_AUTHOR=1
+# export PIP_USE_MIRRORS=1
+
+
+# go environment
+export GOROOT=~/local/go
+export GOOS=darwin
+export GOARCH=386
+
+
+#
+export HISTCONTROL=erasedups:ignoreboth
+export HISTIGNORE='ls:history'
+export HISTSIZE=10000
+export HISTTIMEFORMAT='%F %T '
+export PROMPT_COMMAND='history -a'
+
+shopt -s cmdhist
+shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+
+
+# see also:
+#   http://www.funtoo.org/Keychain
+#   http://www.cyberciti.biz/faq/ssh-passwordless-login-with-keychain-for-scripts/
+# Re-use ssh-agent and/or gpg-agent between logins
+
+#eval $(/usr/bin/keychain --eval --quiet outsell_jtrammell outsell_jtrammell_git johntrammell)
+eval $(/usr/bin/keychain --eval --quiet johntrammell)
+
+#eval $(/usr/bin/keychain --quiet --eval $HOME/.ssh/outsell_jtrammell)
+#ssh-add ~/.ssh/outsell_jtrammell_git
+#ssh-add ~/.ssh/outsell_jtrammell
+#ssh-add ~/.ssh/johntrammell
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+# define PAGER
+
+if [ -z "$PAGER" ]; then
+    export PAGER=`which less`
+fi
+if [ -z "$PAGER" ]; then
+    export PAGER=`which more`
+fi
+
+
+# set prompt
+unset setup_prompt
+function setup_prompt {
+    local PROMPT="[\u@\h:\W \t \#]"
+    local NO_COLOR="\[\e[0m\]"
+    local RED="\[\e[1;31m\]"
+    local GREEN="\[\e[1;32m\]"
+    local YELLOW="\[\e[1;33m\]"
+    local BLUE="\[\e[1;34m\]"
+    local PURPLE="\[\e[1;35m\]"
+    local CYAN="\[\e[1;36m\]"
+    local WHITE="\[\e[1;37m\]"
+    export PS1="${YELLOW}${PROMPT}${NO_COLOR} "
+}
+setup_prompt
+unset setup_prompt
+
+
+
 
 
 
